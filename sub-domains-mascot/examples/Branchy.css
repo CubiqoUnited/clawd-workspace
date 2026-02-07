@@ -1,0 +1,448 @@
+/**
+ * Branchy Component Styles
+ * CSS for React/Vue/Vanilla JS implementations
+ */
+
+/* Base Container */
+.branchy-container {
+  display: inline-block;
+  position: relative;
+  cursor: default;
+}
+
+.branchy-container[role="button"] {
+  cursor: pointer;
+}
+
+/* Mascot Image */
+.branchy-mascot {
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  user-select: none;
+}
+
+.branchy-container:hover .branchy-mascot {
+  transform: scale(1.05);
+}
+
+.branchy-container[role="button"]:hover .branchy-mascot {
+  transform: scale(1.1);
+}
+
+.branchy-container[role="button"]:active .branchy-mascot {
+  transform: scale(0.95);
+}
+
+/* Animations */
+.branchy-container.animated .branchy-mascot {
+  animation: branchy-float 3s ease-in-out infinite;
+}
+
+@keyframes branchy-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* State-specific effects */
+.branchy-mascot.state-green {
+  filter: drop-shadow(0 4px 12px rgba(46, 204, 113, 0.4));
+}
+
+.branchy-mascot.state-yellow {
+  filter: drop-shadow(0 4px 12px rgba(243, 156, 18, 0.4));
+}
+
+.branchy-mascot.state-red {
+  filter: drop-shadow(0 4px 12px rgba(231, 76, 60, 0.4));
+  animation: branchy-pulse 1.5s ease-in-out infinite;
+}
+
+.branchy-mascot.state-blue {
+  filter: drop-shadow(0 4px 12px rgba(52, 152, 219, 0.4));
+}
+
+@keyframes branchy-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 4px 12px rgba(231, 76, 60, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 4px 16px rgba(231, 76, 60, 0.7));
+  }
+}
+
+/* Tooltip */
+.branchy-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  animation: tooltip-appear 0.2s ease;
+}
+
+.branchy-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+@keyframes tooltip-appear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+/* Status Component */
+.branchy-status {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 12px;
+  text-transform: capitalize;
+}
+
+.status-label.status-active {
+  background: #2ECC71;
+  color: white;
+}
+
+.status-label.status-pending {
+  background: #F39C12;
+  color: white;
+}
+
+.status-label.status-error {
+  background: #E74C3C;
+  color: white;
+}
+
+.status-label.status-processing {
+  background: #3498DB;
+  color: white;
+}
+
+.status-label.status-inactive {
+  background: #95a5a6;
+  color: white;
+}
+
+/* Loader Component */
+.branchy-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px;
+}
+
+.loader-message {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Card Component */
+.branchy-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.branchy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.branchy-card:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.card-content {
+  text-align: center;
+  width: 100%;
+}
+
+.subdomain-name {
+  margin: 0 0 4px 0;
+  font-size: 1.125rem;
+  color: #333;
+}
+
+.subdomain-url {
+  margin: 0 0 8px 0;
+  font-size: 0.875rem;
+  color: #666;
+  word-break: break-all;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.status-active {
+  background: #2ECC71;
+  color: white;
+}
+
+.status-badge.status-pending {
+  background: #F39C12;
+  color: white;
+}
+
+.status-badge.status-error {
+  background: #E74C3C;
+  color: white;
+}
+
+.status-badge.status-maintenance {
+  background: #3498DB;
+  color: white;
+}
+
+.status-badge.status-inactive {
+  background: #95a5a6;
+  color: white;
+}
+
+/* Dashboard Component */
+.branchy-dashboard {
+  width: 100%;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #333;
+}
+
+.dashboard-stats {
+  display: flex;
+  gap: 12px;
+}
+
+.status-counts {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.status-counts .count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.branchy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Empty State */
+.branchy-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.branchy-empty-state h3 {
+  margin: 16px 0 8px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.branchy-empty-state p {
+  margin: 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Notification Component */
+.branchy-notification {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  animation: notification-slide-in 0.3s ease;
+}
+
+@keyframes notification-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.notification-message {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: #333;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.notification-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .branchy-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .branchy-card {
+    padding: 16px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .branchy-card {
+    background: #2c2c2c;
+    color: white;
+  }
+  
+  .subdomain-name {
+    color: white;
+  }
+  
+  .subdomain-url {
+    color: #ccc;
+  }
+  
+  .branchy-notification {
+    background: #2c2c2c;
+  }
+  
+  .notification-message {
+    color: white;
+  }
+  
+  .branchy-empty-state h3 {
+    color: white;
+  }
+  
+  .branchy-empty-state p {
+    color: #ccc;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .branchy-mascot,
+  .branchy-container.animated .branchy-mascot,
+  .branchy-card,
+  .branchy-notification {
+    animation: none;
+    transition: none;
+  }
+  
+  .branchy-container:hover .branchy-mascot {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .branchy-card {
+    border: 2px solid currentColor;
+  }
+  
+  .status-badge {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .branchy-notification,
+  .branchy-tooltip {
+    display: none;
+  }
+  
+  .branchy-card {
+    break-inside: avoid;
+  }
+}

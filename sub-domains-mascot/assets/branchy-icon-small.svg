@@ -1,0 +1,20 @@
+<!-- Branchy - Small Icon Version (32x32) -->
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simplified body -->
+  <ellipse cx="16" cy="18" rx="6" ry="8" fill="#8B7355" stroke="#6B5345" stroke-width="1"/>
+  
+  <!-- Simple branches (3 only for small size) -->
+  <path d="M 12 14 L 6 10" stroke="#8B7355" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="6" cy="10" r="2" fill="#90EE90"/>
+  
+  <path d="M 20 14 L 26 10" stroke="#8B7355" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="26" cy="10" r="2" fill="#90EE90"/>
+  
+  <path d="M 16 24 L 16 28" stroke="#8B7355" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="16" cy="28" r="2" fill="#90EE90"/>
+  
+  <!-- Minimal face -->
+  <circle cx="14" cy="17" r="1.5" fill="#2C3E50"/>
+  <circle cx="18" cy="17" r="1.5" fill="#2C3E50"/>
+  <path d="M 13 20 Q 16 22 19 20" stroke="#2C3E50" stroke-width="1" fill="none" stroke-linecap="round"/>
+</svg>

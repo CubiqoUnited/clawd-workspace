@@ -1,0 +1,281 @@
+{
+  "subdomains": [
+    {
+      "domain": "www.cooperativeassistant.com",
+      "purpose": "certification",
+      "canonical": true,
+      "status": "active"
+    },
+    {
+      "domain": "www.thedicey.com",
+      "purpose": "Product",
+      "canonical": true,
+      "status": "active"
+    },
+    {
+      "domain": "www.thediceyai.com",
+      "purpose": "Product (redirect)",
+      "canonical": false,
+      "redirect": "www.thedicey.com",
+      "status": "active"
+    },
+    {
+      "domain": "www.thedicey.ai",
+      "purpose": "Product (redirect)",
+      "canonical": false,
+      "redirect": "www.thedicey.com",
+      "status": "active"
+    },
+    {
+      "domain": "www.feelingdicey.com",
+      "purpose": "merch",
+      "template": "etsy-marketplace",
+      "status": "active"
+    },
+    {
+      "domain": "Dicey.co.in",
+      "purpose": "India merch",
+      "template": "etsy-marketplace",
+      "status": "planned"
+    },
+    {
+      "domain": "www.coqo.ai/store",
+      "purpose": "merch",
+      "template": "etsy-marketplace",
+      "status": "active"
+    },
+    {
+      "domain": "www.coqo.ai",
+      "purpose": "teaser",
+      "template": "cubiqo-staging",
+      "status": "active"
+    },
+    {
+      "domain": "www.headlinesai.ai",
+      "purpose": "AI cuboid",
+      "note": "No prod site needed",
+      "status": "planned"
+    },
+    {
+      "domain": "www.headlinesai.us",
+      "purpose": "US version AI cuboid",
+      "subdomain_of": "www.headlinesai.ai",
+      "status": "planned"
+    },
+    {
+      "domain": "www.headlinesai.shop",
+      "purpose": "Merch",
+      "template": "etsy-marketplace",
+      "status": "planned"
+    },
+    {
+      "domain": "www.cubiqo.com",
+      "purpose": "Product site",
+      "canonical": true,
+      "template": "cubiqo-rolldown",
+      "status": "active"
+    },
+    {
+      "domain": "Cubiqo.com",
+      "purpose": "Product (redirect)",
+      "canonical": false,
+      "redirect": "www.cubiqo.com",
+      "status": "active"
+    },
+    {
+      "domain": "cubiqo.ai",
+      "purpose": "Product (redirect)",
+      "canonical": false,
+      "redirect": "www.cubiqo.com",
+      "status": "active"
+    },
+    {
+      "domain": "www.cubiqo.shop",
+      "purpose": "Merch",
+      "template": "etsy-marketplace",
+      "status": "active",
+      "type": "alias",
+      "createdAt": "2026-02-07T16:14:03.676Z",
+      "dnsConfigured": true
+    },
+    {
+      "domain": "Cubiqo.store",
+      "purpose": "Conceptual sci fi",
+      "template": "volleback",
+      "status": "planned"
+    },
+    {
+      "domain": "Cubiqo.support",
+      "purpose": "Email us",
+      "template": "contact-form",
+      "status": "planned"
+    },
+    {
+      "domain": "Cubiqo.life",
+      "purpose": "Xyz content and color/voice philosophy",
+      "template": "content-blog",
+      "status": "planned"
+    },
+    {
+      "domain": "Cubiqo.blog",
+      "purpose": "Cubiqo services items",
+      "template": "content-blog",
+      "status": "active",
+      "type": "alias",
+      "createdAt": "2026-02-07T16:15:17.047Z",
+      "dnsConfigured": true
+    },
+    {
+      "domain": "Cubiqo.services",
+      "purpose": "Settings cube",
+      "template": "custom",
+      "status": "planned"
+    },
+    {
+      "domain": "TMG",
+      "purpose": "Merch",
+      "template": "etsy-marketplace",
+      "status": "planned"
+    },
+    {
+      "domain": "Cubiqo.investments",
+      "purpose": "Email us pager",
+      "template": "contact-form",
+      "status": "planned"
+    },
+    {
+      "domain": "Cubiqo.team",
+      "purpose": "Team info",
+      "template": "team-page",
+      "status": "active",
+      "type": "alias",
+      "createdAt": "2026-02-07T16:17:28.568Z",
+      "dnsConfigured": true
+    },
+    {
+      "domain": "Vocspad.com",
+      "purpose": "pad ss.com",
+      "template": "etsy-marketplace",
+      "status": "planned"
+    }
+  ],
+  "international_subdomains": {
+    "note": "Subdomain consideration for international markets",
+    "tlds": [
+      ".co.uk",
+      ".com.au",
+      ".nz",
+      ".ca",
+      ".com.br",
+      ".my",
+      ".tw",
+      ".kr",
+      ".jp"
+    ]
+  },
+  "templates": {
+    "cubiqo-rolldown": {
+      "name": "Roll down website like cubiqo website",
+      "style": "landing-page",
+      "features": [
+        "hero-section",
+        "scroll-animations",
+        "product-showcase"
+      ]
+    },
+    "etsy-marketplace": {
+      "name": "Etsy like marketplace",
+      "style": "e-commerce",
+      "features": [
+        "product-grid",
+        "shopping-cart",
+        "shopify-integration",
+        "video-focused-sale"
+      ]
+    },
+    "volleback": {
+      "name": "Volleback kind website",
+      "style": "premium-product",
+      "features": [
+        "immersive-ui",
+        "high-quality-imagery",
+        "storytelling"
+      ]
+    },
+    "cubiqo-staging": {
+      "name": "Cubiqo Staging",
+      "style": "teaser",
+      "features": [
+        "minimal-ui",
+        "coming-soon",
+        "email-capture"
+      ]
+    },
+    "content-blog": {
+      "name": "Content Blog",
+      "style": "blog",
+      "features": [
+        "post-grid",
+        "categories",
+        "search"
+      ]
+    },
+    "team-page": {
+      "name": "Team Page",
+      "style": "about",
+      "features": [
+        "team-profiles",
+        "bio-cards",
+        "contact-info"
+      ]
+    },
+    "contact-form": {
+      "name": "Contact Form",
+      "style": "support",
+      "features": [
+        "email-form",
+        "support-tickets"
+      ]
+    },
+    "custom": {
+      "name": "Custom Template",
+      "style": "custom",
+      "features": [
+        "configurable"
+      ]
+    }
+  },
+  "web_portal": {
+    "priority": "P1",
+    "story_points": "10-15",
+    "scope": {
+      "templates": "Website creation templates",
+      "subdomain_creation": "Automated subdomain creation and production release",
+      "kpi_analytics": "KPI analytics integration",
+      "seo": "SEO and data tracking",
+      "google_sheets": "Google Sheets connecting to JSON",
+      "shopify": "Shopify integration",
+      "controls": "Controls over website and subdomains"
+    },
+    "mvp_features": [
+      "Website generating",
+      "Sub-domain generating"
+    ],
+    "integrations": {
+      "shopify": {
+        "backend": "Shopify backend for payments and inventory",
+        "features": [
+          "Order fulfillment",
+          "User tracking",
+          "A/B testing",
+          "Printify print & ship integration",
+          "Immersive shopping experience"
+        ]
+      },
+      "analytics": {
+        "google_analytics": "Per-domain analytics",
+        "kpi_dashboard": "Real-time KPI tracking"
+      }
+    }
+  }
+}

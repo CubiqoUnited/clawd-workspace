@@ -1,0 +1,40 @@
+<!-- Branchy - Base Design (Neutral State) -->
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body (Tree Trunk) -->
+  <ellipse cx="100" cy="120" rx="35" ry="45" fill="#8B7355" stroke="#6B5345" stroke-width="2"/>
+  
+  <!-- Branch 1 (Top Left) -->
+  <path d="M 75 95 Q 50 80 40 60" stroke="#8B7355" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <circle cx="40" cy="60" r="8" fill="#90EE90"/>
+  
+  <!-- Branch 2 (Top Right) -->
+  <path d="M 125 95 Q 150 80 160 60" stroke="#8B7355" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <circle cx="160" cy="60" r="8" fill="#90EE90"/>
+  
+  <!-- Branch 3 (Middle Left) -->
+  <path d="M 70 110 Q 40 105 25 100" stroke="#8B7355" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle cx="25" cy="100" r="7" fill="#90EE90"/>
+  
+  <!-- Branch 4 (Middle Right) -->
+  <path d="M 130 110 Q 160 105 175 100" stroke="#8B7355" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle cx="175" cy="100" r="7" fill="#90EE90"/>
+  
+  <!-- Branch 5 (Bottom) -->
+  <path d="M 100 155 Q 100 175 100 185" stroke="#8B7355" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle cx="100" cy="185" r="7" fill="#90EE90"/>
+  
+  <!-- Face -->
+  <!-- Eyes -->
+  <circle cx="90" cy="115" r="5" fill="#2C3E50"/>
+  <circle cx="110" cy="115" r="5" fill="#2C3E50"/>
+  
+  <!-- Eye shine -->
+  <circle cx="92" cy="113" r="2" fill="#FFFFFF"/>
+  <circle cx="112" cy="113" r="2" fill="#FFFFFF"/>
+  
+  <!-- Smile -->
+  <path d="M 85 130 Q 100 138 115 130" stroke="#2C3E50" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Optional: Ground/Base -->
+  <ellipse cx="100" cy="195" rx="40" ry="5" fill="rgba(0,0,0,0.1)"/>
+</svg>

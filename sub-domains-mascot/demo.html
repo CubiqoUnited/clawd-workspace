@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branchy - Sub-Domains Mascot Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .demo-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        
+        .mascot-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .mascot-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .mascot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .mascot-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        
+        .mascot-card p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+        
+        .mascot-display {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 15px;
+        }
+        
+        .mascot-display img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+        
+        .badge-green { background: #2ECC71; color: white; }
+        .badge-yellow { background: #F39C12; color: white; }
+        .badge-red { background: #E74C3C; color: white; }
+        .badge-blue { background: #3498DB; color: white; }
+        .badge-neutral { background: #95a5a6; color: white; }
+        
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        .controls h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .btn-green { background: #2ECC71; color: white; }
+        .btn-yellow { background: #F39C12; color: white; }
+        .btn-red { background: #E74C3C; color: white; }
+        .btn-blue { background: #3498DB; color: white; }
+        .btn-neutral { background: #95a5a6; color: white; }
+        
+        .interactive-demo {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        .interactive-demo h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        #interactive-branchy {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .status-text {
+            text-align: center;
+            color: #333;
+            font-size: 1.2em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        .use-cases {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        .use-cases h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .use-case {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        
+        .use-case h4 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .use-case p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .mascot-showcase { grid-template-columns: 1fr; }
+            .button-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌳 Branchy</h1>
+        <p class="subtitle">The Sub-Domains Mascot</p>
+    </div>
+    
+    <div class="demo-container">
+        <div class="mascot-showcase">
+            <div class="mascot-card" onclick="changeState('base')">
+                <div class="mascot-display">
+                    <img src="assets/branchy-base.svg" alt="Branchy Base">
+                </div>
+                <h3>Neutral</h3>
+                <p>Default state, ready to help</p>
+                <span class="state-badge badge-neutral">READY</span>
+            </div>
+            
+            <div class="mascot-card" onclick="changeState('green')">
+                <div class="mascot-display">
+                    <img src="assets/branchy-green.svg" alt="Branchy Green">
+                </div>
+                <h3>Active</h3>
+                <p>Subdomain is healthy and running</p>
+                <span class="state-badge badge-green">ACTIVE</span>
+            </div>
+            
+            <div class="mascot-card" onclick="changeState('yellow')">
+                <div class="mascot-display">
+                    <img src="assets/branchy-yellow.svg" alt="Branchy Yellow">
+                </div>
+                <h3>Warning</h3>
+                <p>Needs attention or processing</p>
+                <span class="state-badge badge-yellow">PENDING</span>
+            </div>
+            
+            <div class="mascot-card" onclick="changeState('red')">
+                <div class="mascot-display">
+                    <img src="assets/branchy-red.svg" alt="Branchy Red">
+                </div>
+                <h3>Critical</h3>
+                <p>Error requires immediate action</p>
+                <span class="state-badge badge-red">ERROR</span>
+            </div>
+            
+            <div class="mascot-card" onclick="changeState('blue')">
+                <div class="mascot-display">
+                    <img src="assets/branchy-blue.svg" alt="Branchy Blue">
+                </div>
+                <h3>Focused</h3>
+                <p>Professional/business mode</p>
+                <span class="state-badge badge-blue">FOCUSED</span>
+            </div>
+        </div>
+        
+        <div class="interactive-demo">
+            <h2>Interactive Demo</h2>
+            <img id="interactive-branchy" src="assets/branchy-base.svg" alt="Interactive Branchy">
+            <div class="status-text" id="status-text">Ready to create subdomains!</div>
+            <div class="button-group" style="justify-content: center; margin-top: 20px;">
+                <button class="btn-neutral" onclick="changeState('base')">Reset</button>
+                <button class="btn-green" onclick="changeState('green')">Activate</button>
+                <button class="btn-yellow" onclick="changeState('yellow')">Warn</button>
+                <button class="btn-red" onclick="changeState('red')">Error</button>
+                <button class="btn-blue" onclick="changeState('blue')">Focus</button>
+            </div>
+        </div>
+        
+        <div class="use-cases">
+            <h2>Use Cases</h2>
+            
+            <div class="use-case">
+                <h4>🚀 Subdomain Creation</h4>
+                <p>Branchy appears when creating a new subdomain. A new branch grows to represent the new subdomain, with color indicating the status of the creation process.</p>
+            </div>
+            
+            <div class="use-case">
+                <h4>📊 Domain Dashboard</h4>
+                <p>Multiple Branchies represent different domains. Hover to see domain details, click to manage. Visual clustering shows related subdomains.</p>
+            </div>
+            
+            <div class="use-case">
+                <h4>🔗 Connection Visualization</h4>
+                <p>Branchies connect via animated branches when domains are linked. Interactive network visualization of your entire domain structure.</p>
+            </div>
+            
+            <div class="use-case">
+                <h4>⚠️ Status Indicators</h4>
+                <p>Small Branchy icon in the corner shows overall system health. Color changes based on system status, with notification badges on branches for alerts.</p>
+            </div>
+            
+            <div class="use-case">
+                <h4>🎓 Onboarding & Tutorials</h4>
+                <p>Branchy guides new users through subdomain setup with speech bubbles containing helpful tips and animated demonstrations.</p>
+            </div>
+            
+            <div class="use-case">
+                <h4>⏳ Loading States</h4>
+                <p>Branchy's branches gently rotate while loading. Progress is indicated by sequential branch illumination - a friendly alternative to boring spinners.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const statusMessages = {
+            base: "Ready to create subdomains!",
+            green: "✓ All systems operational!",
+            yellow: "⚠ Attention needed for some domains",
+            red: "✗ Critical error detected!",
+            blue: "◉ Focused on task execution"
+        };
+        
+        function changeState(state) {
+            const img = document.getElementById('interactive-branchy');
+            const statusText = document.getElementById('status-text');
+            
+            img.style.transform = 'scale(0.8)';
+            img.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                img.src = `assets/branchy-${state}.svg`;
+                statusText.textContent = statusMessages[state];
+                
+                img.style.transform = 'scale(1)';
+                img.style.opacity = '1';
+            }, 200);
+        }
+        
+        // Add transition styles
+        const img = document.getElementById('interactive-branchy');
+        img.style.transition = 'all 0.3s ease';
+    </script>
+</body>
+</html>

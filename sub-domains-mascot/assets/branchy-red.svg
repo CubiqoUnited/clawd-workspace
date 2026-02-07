@@ -1,0 +1,84 @@
+<!-- Branchy - Red State (Error/Critical) -->
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Glow effect -->
+  <defs>
+    <filter id="redGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="redGradient">
+      <stop offset="0%" style="stop-color:#E74C3C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C0392B;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Body (Tree Trunk) - Alert -->
+  <ellipse cx="100" cy="120" rx="35" ry="45" fill="url(#redGradient)" stroke="#A93226" stroke-width="2">
+    <animate attributeName="rx" values="35;37;35" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="45;47;45" dur="1s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Branch 1 (Top Left) - Alert pointing -->
+  <path d="M 75 95 Q 42 70 30 50" stroke="#C0392B" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <circle cx="30" cy="50" r="9" fill="#E74C3C">
+    <animate attributeName="r" values="9;11;9" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Branch 2 (Top Right) - Alert pointing -->
+  <path d="M 125 95 Q 158 70 170 50" stroke="#C0392B" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <circle cx="170" cy="50" r="9" fill="#E74C3C">
+    <animate attributeName="r" values="9;11;9" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Branch 3 (Middle Left) - Tense -->
+  <path d="M 70 110 Q 35 102 18 95" stroke="#C0392B" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle cx="18" cy="95" r="7" fill="#E74C3C"/>
+  
+  <!-- Branch 4 (Middle Right) - Tense -->
+  <path d="M 130 110 Q 165 102 182 95" stroke="#C0392B" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle cx="182" cy="95" r="7" fill="#E74C3C"/>
+  
+  <!-- Branch 5 (Bottom) - Shortened/Alert -->
+  <path d="M 100 155 Q 100 172 100 180" stroke="#C0392B" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle cx="100" cy="180" r="7" fill="#E74C3C"/>
+  
+  <!-- Face - Concerned/Alert -->
+  <!-- Eyes - Wide, worried -->
+  <circle cx="88" cy="115" r="6" fill="#641E16"/>
+  <circle cx="112" cy="115" r="6" fill="#641E16"/>
+  
+  <!-- Eye shine -->
+  <circle cx="90" cy="113" r="2" fill="#FFFFFF"/>
+  <circle cx="114" cy="113" r="2" fill="#FFFFFF"/>
+  
+  <!-- Worried expression -->
+  <path d="M 88 133 Q 100 131 112 133" stroke="#641E16" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Worried eyebrows -->
+  <path d="M 82 105 Q 88 103 94 104" stroke="#641E16" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 106 104 Q 112 103 118 105" stroke="#641E16" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Error symbol above head -->
+  <g transform="translate(100, 45)">
+    <circle cx="0" cy="0" r="15" fill="#E74C3C" stroke="#C0392B" stroke-width="2" filter="url(#redGlow)">
+      <animate attributeName="opacity" values="1;0.7;1" dur="0.8s" repeatCount="indefinite"/>
+    </circle>
+    <text x="0" y="6" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">✕</text>
+  </g>
+  
+  <!-- Alert lines -->
+  <line x1="60" y1="120" x2="45" y2="115" stroke="#E74C3C" stroke-width="2" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0;0.5" dur="1s" repeatCount="indefinite"/>
+  </line>
+  <line x1="140" y1="120" x2="155" y2="115" stroke="#E74C3C" stroke-width="2" opacity="0.5">
+    <animate attributeName="opacity" values="0;0.5;0" dur="1s" repeatCount="indefinite"/>
+  </line>
+  
+  <!-- Ground shadow - pulsing -->
+  <ellipse cx="100" cy="195" rx="40" ry="5" fill="rgba(231,76,60,0.3)">
+    <animate attributeName="rx" values="40;44;40" dur="1s" repeatCount="indefinite"/>
+  </ellipse>
+</svg>

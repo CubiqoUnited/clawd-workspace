@@ -1,0 +1,30 @@
+{
+  "name": "@cubiqo/web-portal",
+  "version": "1.0.0",
+  "description": "Cubiqo Web Portal - Automated website generation and deployment system",
+  "main": "cli.js",
+  "bin": {
+    "portal": "./cli.js"
+  },
+  "scripts": {
+    "start": "node cli.js",
+    "generate": "node cli.js generate",
+    "deploy": "node cli.js deploy",
+    "list": "node cli.js list",
+    "test": "node test/test-generator.js"
+  },
+  "keywords": [
+    "cubiqo",
+    "website-generator",
+    "subdomain",
+    "vercel",
+    "deployment"
+  ],
+  "author": "Cubiqo Team <aditya@cubiqo.ai>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

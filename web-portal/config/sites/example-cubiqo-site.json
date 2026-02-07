@@ -1,0 +1,156 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440001",
+  "domain": "example.cubiqo.ai",
+  "subdomain": "example",
+  "template": "cubiqo-staging",
+  "status": "active",
+  "createdAt": "2026-02-07T15:30:00Z",
+  "updatedAt": "2026-02-07T15:30:00Z",
+  "owner": {
+    "userId": "user_123",
+    "email": "admin@cubiqo.ai"
+  },
+  "routing": {
+    "path": "/",
+    "customDomain": null,
+    "redirects": [],
+    "canonicalUrl": "https://example.cubiqo.ai"
+  },
+  "appearance": {
+    "theme": "dark",
+    "primaryColor": "#F79009",
+    "secondaryColor": "#2E90FA",
+    "backgroundColor": "#000000",
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "logo": {
+      "url": "https://cubiqo.ai/logo.svg",
+      "width": 120,
+      "height": 40,
+      "alt": "CubiQo Logo"
+    },
+    "customCSS": ""
+  },
+  "content": {
+    "siteName": "Example CubiQo Site",
+    "tagline": "One Mind. Many Dimensions.",
+    "description": "Emotional AI companion with persistent memory and voice interface",
+    "hero": {
+      "title": "Welcome to CubiQo",
+      "subtitle": "Experience AI in four emotional dimensions",
+      "backgroundImage": "https://cubiqo.ai/hero-bg.jpg",
+      "ctaText": "Get Started",
+      "ctaUrl": "/chat"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "type": "hero",
+        "content": {
+          "showCube": true,
+          "animation": "floating"
+        },
+        "visible": true,
+        "order": 1
+      },
+      {
+        "id": "features",
+        "type": "features",
+        "content": {
+          "title": "Features",
+          "items": [
+            {
+              "icon": "🎤",
+              "title": "Voice Interface",
+              "description": "Natural conversation with speech recognition and TTS"
+            },
+            {
+              "icon": "🧊",
+              "title": "3D Emotional Cube",
+              "description": "Visual representation of 4 emotional states"
+            },
+            {
+              "icon": "🧠",
+              "title": "Persistent Memory",
+              "description": "AI that remembers your conversations and preferences"
+            }
+          ]
+        },
+        "visible": true,
+        "order": 2
+      }
+    ]
+  },
+  "seo": {
+    "title": "CubiQo - Emotional AI Companion",
+    "description": "Experience AI in four emotional dimensions with voice interface and persistent memory",
+    "keywords": ["AI", "chatbot", "voice assistant", "emotional AI", "CubiQo"],
+    "ogImage": "https://cubiqo.ai/og-image.jpg",
+    "twitterCard": "summary_large_image",
+    "robots": "index,follow",
+    "sitemap": true
+  },
+  "analytics": {
+    "googleAnalytics": "G-XXXXXXXXXX",
+    "googleTagManager": "GTM-XXXXXXX",
+    "customEvents": true,
+    "trackColorChanges": true,
+    "trackChatInteractions": true,
+    "vercelAnalytics": true,
+    "vercelSpeedInsights": true
+  },
+  "integrations": {
+    "shopify": {
+      "enabled": false
+    },
+    "printify": {
+      "enabled": false
+    },
+    "googleSheets": {
+      "enabled": false
+    },
+    "supabase": {
+      "enabled": true,
+      "projectUrl": "https://xxxxx.supabase.co",
+      "anonKey": "eyJ..."
+    }
+  },
+  "features": {
+    "voice": true,
+    "chat": true,
+    "ecommerce": false,
+    "blog": false,
+    "newsletter": true,
+    "contactForm": true,
+    "cuboidAnimation": true
+  },
+  "deployment": {
+    "provider": "vercel",
+    "projectId": "prj_xxxxxxxxxxxxxxx",
+    "branch": "main",
+    "buildCommand": "npm run build",
+    "outputDirectory": ".next",
+    "environmentVariables": {
+      "NEXT_PUBLIC_SITE_ID": "550e8400-e29b-41d4-a716-446655440001",
+      "NEXT_PUBLIC_ANALYTICS_ID": "G-XXXXXXXXXX"
+    },
+    "autoDeployOnPush": true
+  },
+  "locale": {
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en"],
+    "timezone": "America/New_York",
+    "currency": "USD",
+    "dateFormat": "MM/DD/YYYY"
+  },
+  "permissions": {
+    "public": true,
+    "passwordProtected": false,
+    "allowedUsers": [],
+    "requireAuth": false
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "templateVersion": "2.0.0",
+    "notes": "Example site configuration"
+  }
+}

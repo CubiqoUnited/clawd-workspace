@@ -1,0 +1,441 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CubiQo Web Portal Site Configuration",
+  "description": "Configuration schema for sites created via CubiQo Web Portal. Extended from regional config system.",
+  "type": "object",
+  "required": ["id", "domain", "template", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique site identifier (UUID)",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Full domain or subdomain (e.g., 'example.cubiqo.ai')",
+      "pattern": "^[a-z0-9][a-z0-9-]*\\.[a-z0-9][a-z0-9-\\.]*[a-z]$"
+    },
+    "subdomain": {
+      "type": "string",
+      "description": "Subdomain prefix (e.g., 'example' for example.cubiqo.ai)",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,62}[a-z0-9]$"
+    },
+    "template": {
+      "type": "string",
+      "enum": ["cubiqo-staging", "vollebak", "etsy-marketplace"],
+      "description": "Template to use for site generation"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "deploying", "active", "paused", "archived"],
+      "default": "draft",
+      "description": "Current site status"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of creation"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last update"
+    },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "User ID of site owner"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "URL path for this site (e.g., '/shop')"
+        },
+        "customDomain": {
+          "type": "string",
+          "description": "Optional custom domain (e.g., 'example.com')",
+          "pattern": "^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$"
+        },
+        "redirects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from": { "type": "string" },
+              "to": { "type": "string" },
+              "permanent": { "type": "boolean", "default": false }
+            }
+          }
+        },
+        "canonicalUrl": {
+          "type": "string",
+          "description": "Canonical URL for SEO"
+        }
+      }
+    },
+    "appearance": {
+      "type": "object",
+      "properties": {
+        "theme": {
+          "type": "string",
+          "enum": ["dark", "light", "auto"],
+          "default": "dark"
+        },
+        "primaryColor": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$",
+          "description": "Primary brand color (hex)",
+          "default": "#F79009"
+        },
+        "secondaryColor": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$",
+          "description": "Secondary color (hex)"
+        },
+        "backgroundColor": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$",
+          "description": "Background color (hex)",
+          "default": "#000000"
+        },
+        "fontFamily": {
+          "type": "string",
+          "description": "Primary font family"
+        },
+        "logo": {
+          "type": "object",
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "width": { "type": "number" },
+            "height": { "type": "number" },
+            "alt": { "type": "string" }
+          }
+        },
+        "customCSS": {
+          "type": "string",
+          "description": "Additional CSS overrides"
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "properties": {
+        "siteName": {
+          "type": "string",
+          "description": "Display name of the site"
+        },
+        "tagline": {
+          "type": "string",
+          "description": "Site tagline or slogan"
+        },
+        "description": {
+          "type": "string",
+          "description": "Site description for meta tags"
+        },
+        "hero": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "subtitle": { "type": "string" },
+            "backgroundImage": { "type": "string", "format": "uri" },
+            "ctaText": { "type": "string" },
+            "ctaUrl": { "type": "string" }
+          }
+        },
+        "sections": {
+          "type": "array",
+          "description": "Content sections",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "type": { 
+                "type": "string",
+                "enum": ["hero", "features", "products", "gallery", "testimonials", "cta", "custom"]
+              },
+              "content": { "type": "object" },
+              "visible": { "type": "boolean", "default": true },
+              "order": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "seo": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "SEO title tag"
+        },
+        "description": {
+          "type": "string",
+          "description": "Meta description"
+        },
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "SEO keywords"
+        },
+        "ogImage": {
+          "type": "string",
+          "format": "uri",
+          "description": "Open Graph image URL"
+        },
+        "twitterCard": {
+          "type": "string",
+          "enum": ["summary", "summary_large_image"],
+          "default": "summary_large_image"
+        },
+        "robots": {
+          "type": "string",
+          "enum": ["index,follow", "noindex,nofollow", "index,nofollow"],
+          "default": "index,follow"
+        },
+        "sitemap": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include in sitemap.xml"
+        }
+      }
+    },
+    "analytics": {
+      "type": "object",
+      "properties": {
+        "googleAnalytics": {
+          "type": "string",
+          "pattern": "^(G-[A-Z0-9]+|UA-[0-9]+-[0-9]+)$",
+          "description": "Google Analytics tracking ID"
+        },
+        "googleTagManager": {
+          "type": "string",
+          "pattern": "^GTM-[A-Z0-9]+$",
+          "description": "Google Tag Manager ID"
+        },
+        "customEvents": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable custom event tracking"
+        },
+        "trackColorChanges": {
+          "type": "boolean",
+          "default": false,
+          "description": "Track CubiQo color zone changes"
+        },
+        "trackChatInteractions": {
+          "type": "boolean",
+          "default": false,
+          "description": "Track chat/voice interactions"
+        },
+        "vercelAnalytics": {
+          "type": "boolean",
+          "default": true
+        },
+        "vercelSpeedInsights": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "integrations": {
+      "type": "object",
+      "properties": {
+        "shopify": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": false
+            },
+            "storeUrl": {
+              "type": "string",
+              "pattern": "^https://[a-z0-9-]+\\.myshopify\\.com$"
+            },
+            "storefrontAccessToken": {
+              "type": "string"
+            },
+            "enableInventorySync": {
+              "type": "boolean",
+              "default": true
+            },
+            "enableOrderTracking": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          "required": ["enabled"]
+        },
+        "printify": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": false },
+            "apiKey": { "type": "string" },
+            "shopId": { "type": "string" }
+          }
+        },
+        "googleSheets": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": false },
+            "spreadsheetId": { "type": "string" },
+            "range": { "type": "string", "description": "Sheet range (e.g., 'Sheet1!A1:Z100')" },
+            "syncInterval": { 
+              "type": "number",
+              "description": "Sync interval in minutes",
+              "default": 60
+            }
+          }
+        },
+        "supabase": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": false },
+            "projectUrl": { "type": "string", "format": "uri" },
+            "anonKey": { "type": "string" }
+          }
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "voice": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable voice interface (CubiQo sites)"
+        },
+        "chat": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable chat interface"
+        },
+        "ecommerce": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable e-commerce features"
+        },
+        "blog": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable blog/content pages"
+        },
+        "newsletter": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable newsletter signup"
+        },
+        "contactForm": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable contact form"
+        },
+        "cuboidAnimation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include 3D cube animation (CubiQo sites)"
+        }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "enum": ["vercel", "netlify", "custom"],
+          "default": "vercel"
+        },
+        "projectId": {
+          "type": "string",
+          "description": "Deployment platform project ID"
+        },
+        "branch": {
+          "type": "string",
+          "default": "main",
+          "description": "Git branch to deploy"
+        },
+        "buildCommand": {
+          "type": "string",
+          "default": "npm run build"
+        },
+        "outputDirectory": {
+          "type": "string",
+          "default": ".next"
+        },
+        "environmentVariables": {
+          "type": "object",
+          "description": "Deployment environment variables"
+        },
+        "autoDeployOnPush": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "locale": {
+      "type": "object",
+      "properties": {
+        "defaultLanguage": {
+          "type": "string",
+          "pattern": "^[a-z]{2}$",
+          "default": "en"
+        },
+        "supportedLanguages": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+        },
+        "timezone": {
+          "type": "string",
+          "description": "IANA timezone (e.g., 'America/New_York')"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code",
+          "default": "USD"
+        },
+        "dateFormat": {
+          "type": "string",
+          "default": "MM/DD/YYYY"
+        }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "properties": {
+        "public": {
+          "type": "boolean",
+          "default": true,
+          "description": "Site is publicly accessible"
+        },
+        "passwordProtected": {
+          "type": "boolean",
+          "default": false
+        },
+        "allowedUsers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "User IDs with access"
+        },
+        "requireAuth": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional custom metadata",
+      "additionalProperties": true
+    }
+  }
+}

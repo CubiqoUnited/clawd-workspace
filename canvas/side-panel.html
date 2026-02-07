@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cubiqo Side Panel - Keywords RGY</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    .side-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 380px;
+      height: 100%;
+      background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .panel-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 6px;
+    }
+
+    .panel-subtitle {
+      font-size: 13px;
+      opacity: 0.6;
+      line-height: 1.4;
+    }
+
+    .panel-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+
+    .color-zone {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      border: 2px solid;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .color-zone:hover {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateX(-2px);
+    }
+
+    .color-zone.red {
+      border-color: #FF4444;
+      box-shadow: 0 0 20px rgba(255, 68, 68, 0.15);
+    }
+
+    .color-zone.yellow {
+      border-color: #FFD700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+    }
+
+    .color-zone.green {
+      border-color: #12B76A;
+      box-shadow: 0 0 20px rgba(18, 183, 106, 0.15);
+    }
+
+    .zone-header {
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .zone-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .color-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      box-shadow: 0 0 12px currentColor;
+    }
+
+    .red .color-indicator {
+      background: #FF4444;
+      color: #FF4444;
+    }
+
+    .yellow .color-indicator {
+      background: #FFD700;
+      color: #FFD700;
+    }
+
+    .green .color-indicator {
+      background: #12B76A;
+      color: #12B76A;
+    }
+
+    .zone-toggle {
+      font-size: 12px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .zone-header:hover .zone-toggle {
+      opacity: 1;
+    }
+
+    .zone-body {
+      padding: 0 18px 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .zone-body.expanded {
+      max-height: 600px;
+    }
+
+    .zone-description {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .keywords-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .keyword-tag {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 6px 12px;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.2s ease;
+    }
+
+    .keyword-tag:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .keyword-tag .remove-btn {
+      cursor: pointer;
+      opacity: 0.6;
+      font-size: 14px;
+      line-height: 1;
+      transition: opacity 0.2s;
+    }
+
+    .keyword-tag .remove-btn:hover {
+      opacity: 1;
+    }
+
+    .add-keyword-form {
+      display: flex;
+      gap: 8px;
+    }
+
+    .keyword-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .keyword-input:focus {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .add-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 8px 16px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .add-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .add-btn:active {
+      transform: scale(0.98);
+    }
+
+    .panel-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 16px 24px;
+    }
+
+    .disclaimers {
+      font-size: 11px;
+      line-height: 1.6;
+      opacity: 0.5;
+    }
+
+    .disclaimer-item {
+      margin-bottom: 8px;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .disclaimer-item:before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      opacity: 0.6;
+    }
+
+    .demo-container {
+      width: calc(100% - 380px);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .demo-content {
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .demo-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #FF4444, #FFD700, #12B76A);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .demo-subtitle {
+      font-size: 16px;
+      opacity: 0.6;
+      line-height: 1.6;
+    }
+
+    /* Scrollbar styling */
+    .panel-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .panel-content::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .panel-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+
+    .panel-content::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .side-panel {
+        width: 100%;
+        border-left: none;
+      }
+      .demo-container {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <div class="demo-content">
+      <h1 class="demo-title">Cubiqo Side Panel</h1>
+      <p class="demo-subtitle">
+        Manage your keywords across Red, Yellow, and Green zones. 
+        Keywords help Cubiqo understand your preferences and connect you with the right matches.
+      </p>
+    </div>
+  </div>
+
+  <div class="side-panel">
+    <div class="panel-header">
+      <div class="panel-title">RGY Keywords Panel</div>
+      <div class="panel-subtitle">Manage your color-coded preferences</div>
+    </div>
+
+    <div class="panel-content">
+      <!-- RED ZONE -->
+      <div class="color-zone red" data-color="red">
+        <div class="zone-header" onclick="toggleZone('red')">
+          <div class="zone-label">
+            <span class="color-indicator"></span>
+            <span>Red Zone</span>
+          </div>
+          <span class="zone-toggle">▼</span>
+        </div>
+        <div class="zone-body" id="red-body">
+          <div class="zone-description">
+            Dating, adult content, indulgence. Keywords here help with intimate and personal connections.
+          </div>
+          <div class="keywords-container" id="red-keywords"></div>
+          <div class="add-keyword-form">
+            <input 
+              type="text" 
+              class="keyword-input" 
+              id="red-input" 
+              placeholder="Add keyword..."
+              onkeypress="handleKeyPress(event, 'red')"
+            />
+            <button class="add-btn" onclick="addKeyword('red')">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- YELLOW ZONE -->
+      <div class="color-zone yellow" data-color="yellow">
+        <div class="zone-header" onclick="toggleZone('yellow')">
+          <div class="zone-label">
+            <span class="color-indicator"></span>
+            <span>Yellow Zone</span>
+          </div>
+          <span class="zone-toggle">▼</span>
+        </div>
+        <div class="zone-body" id="yellow-body">
+          <div class="zone-description">
+            Social, friends, harmless platonic hangouts. Keywords for casual connections and fun activities.
+          </div>
+          <div class="keywords-container" id="yellow-keywords"></div>
+          <div class="add-keyword-form">
+            <input 
+              type="text" 
+              class="keyword-input" 
+              id="yellow-input" 
+              placeholder="Add keyword..."
+              onkeypress="handleKeyPress(event, 'yellow')"
+            />
+            <button class="add-btn" onclick="addKeyword('yellow')">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- GREEN ZONE -->
+      <div class="color-zone green" data-color="green">
+        <div class="zone-header" onclick="toggleZone('green')">
+          <div class="zone-label">
+            <span class="color-indicator"></span>
+            <span>Green Zone</span>
+          </div>
+          <span class="zone-toggle">▼</span>
+        </div>
+        <div class="zone-body" id="green-body">
+          <div class="zone-description">
+            Work, trade, wellness, achievement. Keywords for professional networking and personal growth.
+          </div>
+          <div class="keywords-container" id="green-keywords"></div>
+          <div class="add-keyword-form">
+            <input 
+              type="text" 
+              class="keyword-input" 
+              id="green-input" 
+              placeholder="Add keyword..."
+              onkeypress="handleKeyPress(event, 'green')"
+            />
+            <button class="add-btn" onclick="addKeyword('green')">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <div class="disclaimers">
+        <div class="disclaimer-item">Keywords are used to match you with relevant connections and content within the RGY chat system.</div>
+        <div class="disclaimer-item">Your keywords are private and only used for matching purposes. They are not shared publicly.</div>
+        <div class="disclaimer-item">Keywords automatically update when you navigate to RGY chats, based on your conversations with Cubiqo.</div>
+        <div class="disclaimer-item">You can edit or remove keywords at any time. Changes take effect immediately.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Data structure to hold keywords per color
+    const keywordsData = {
+      red: ['dating', 'romance', 'nightlife'],
+      yellow: ['friends', 'hangout', 'coffee', 'movies'],
+      green: ['networking', 'freelance', 'IT development', 'wellness']
+    };
+
+    // Initialize panel
+    function init() {
+      // Load keywords from localStorage or use defaults
+      const savedData = localStorage.getItem('rgy-keywords');
+      if (savedData) {
+        try {
+          Object.assign(keywordsData, JSON.parse(savedData));
+        } catch (e) {
+          console.error('Failed to load saved keywords:', e);
+        }
+      }
+
+      // Render all zones
+      renderKeywords('red');
+      renderKeywords('yellow');
+      renderKeywords('green');
+
+      // Expand first zone by default
+      toggleZone('red');
+    }
+
+    // Toggle zone expansion
+    function toggleZone(color) {
+      const body = document.getElementById(`${color}-body`);
+      const isExpanded = body.classList.contains('expanded');
+      
+      // Collapse all zones
+      document.querySelectorAll('.zone-body').forEach(zone => {
+        zone.classList.remove('expanded');
+      });
+      
+      // Expand clicked zone if it wasn't already expanded
+      if (!isExpanded) {
+        body.classList.add('expanded');
+      }
+    }
+
+    // Render keywords for a color zone
+    function renderKeywords(color) {
+      const container = document.getElementById(`${color}-keywords`);
+      container.innerHTML = '';
+      
+      keywordsData[color].forEach(keyword => {
+        const tag = document.createElement('div');
+        tag.className = 'keyword-tag';
+        tag.innerHTML = `
+          <span>${keyword}</span>
+          <span class="remove-btn" onclick="removeKeyword('${color}', '${keyword}')">×</span>
+        `;
+        container.appendChild(tag);
+      });
+    }
+
+    // Add keyword
+    function addKeyword(color) {
+      const input = document.getElementById(`${color}-input`);
+      const keyword = input.value.trim().toLowerCase();
+      
+      if (!keyword) return;
+      
+      if (keywordsData[color].includes(keyword)) {
+        alert('This keyword already exists in this zone');
+        return;
+      }
+      
+      keywordsData[color].push(keyword);
+      input.value = '';
+      saveKeywords();
+      renderKeywords(color);
+    }
+
+    // Remove keyword
+    function removeKeyword(color, keyword) {
+      keywordsData[color] = keywordsData[color].filter(k => k !== keyword);
+      saveKeywords();
+      renderKeywords(color);
+    }
+
+    // Handle Enter key press
+    function handleKeyPress(event, color) {
+      if (event.key === 'Enter') {
+        addKeyword(color);
+      }
+    }
+
+    // Save keywords to localStorage
+    function saveKeywords() {
+      localStorage.setItem('rgy-keywords', JSON.stringify(keywordsData));
+    }
+
+    // Initialize on load
+    init();
+  </script>
+</body>
+</html>
