@@ -249,18 +249,20 @@ export default function AdminDashboard() {
           </div>
         </footer>
 
-        <script>
-          console.log('Admin Dashboard - Static HTML Version');
-          console.log('No React hooks. No API calls. Just works.');
-          
-          // Simple interactivity
-          document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-              e.preventDefault();
-              alert('Button clicked! In a real app, this would create a new site.');
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            console.log('Admin Dashboard - Static HTML Version');
+            console.log('No React hooks. No API calls. Just works.');
+            
+            // Simple interactivity
+            document.querySelectorAll('.btn').forEach(button => {
+              button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Button clicked! In a real app, this would create a new site.');
+              });
             });
-          });
-        </script>
+          `
+        }} />
       </body>
     </html>
   );
