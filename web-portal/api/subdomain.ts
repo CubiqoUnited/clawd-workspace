@@ -18,7 +18,7 @@ const validateSiteConfig = ajv.compile(siteSchema);
 
 export interface SubdomainCreateRequest {
   subdomain: string;
-  template: 'cubiqo-staging' | 'vollebak' | 'etsy-marketplace';
+  template: 'cubiqo-staging' | 'cubiqo-rolldown' | 'vollebak' | 'etsy-marketplace';
   config: Partial<SiteConfig>;
   ownerId: string;
   ownerEmail: string;
@@ -38,6 +38,9 @@ export interface SiteConfig {
   subdomain: string;
   template: string;
   status: string;
+  createdAt?: string;
+  updatedAt?: string;
+  owner?: any;
   routing: any;
   appearance: any;
   content: any;
@@ -422,7 +425,7 @@ function getTemplateDefaults(template: string): Partial<SiteConfig> {
     }
   };
   
-  return templates[template] || templates['cubiqo-staging'];
+  return templates[template as keyof typeof templates] || templates['cubiqo-staging'];
 }
 
 // ============================================================================
@@ -473,7 +476,7 @@ export async function createSubdomain(
       siteId: siteConfig.id,
       domain: siteConfig.domain,
       status: 'draft',
-      errors: validateSiteConfig.errors?.map(e => e.message) || ['Configuration validation failed']
+      errors: validateSiteConfig.errors?.map(e => e.message || 'Unknown error') || ['Configuration validation failed']
     };
   }
   

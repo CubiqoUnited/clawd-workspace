@@ -1,0 +1,338 @@
+{
+  "id": "cubiqo-product-site",
+  "domain": "www.cubiqo.com",
+  "subdomain": "www",
+  "template": "cubiqo-rolldown",
+  "status": "draft",
+  "createdAt": "2026-02-07T21:52:00Z",
+  "owner": {
+    "userId": "ed-9907",
+    "email": "ed@cubiqo.com"
+  },
+  "routing": {
+    "path": "/",
+    "customDomain": "www.cubiqo.com",
+    "canonicalUrl": "https://www.cubiqo.com"
+  },
+  "appearance": {
+    "theme": "dark",
+    "primaryColor": "#9333EA",
+    "secondaryColor": "#3B82F6",
+    "backgroundColor": "#000000",
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "customCSS": "/* Neon glow effects, 3D cube animations */"
+  },
+  "content": {
+    "siteName": "CubiQo",
+    "tagline": "Intelligence, Reimagined",
+    "description": "Private, secure, multi-model AI assistant. Routes to optimal models—Claude, OpenAI, specialized systems. Zero data retention.",
+    "hero": {
+      "title": "CUBIQO WORLDS",
+      "subtitle": "Meet the faces that power your universe.",
+      "backgroundImage": "/assets/cubiqo-com/hero-cubiqo-worlds.jpg",
+      "ctaText": "Get Free Access",
+      "ctaUrl": "/signup"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "type": "hero",
+        "visible": true,
+        "order": 1,
+        "content": {
+          "title": "CUBIQO WORLDS",
+          "subtitle": "Meet the faces that power your universe.",
+          "backgroundImage": "/assets/cubiqo-com/hero-cubiqo-worlds.jpg",
+          "characters": [
+            {
+              "name": "Cubiqo Worlds",
+              "tagline": "The Mind That Connects All Worlds",
+              "icon": "gradient-cube"
+            },
+            {
+              "name": "Dicey",
+              "tagline": "Don't be Dicey, Get Dicey",
+              "icon": "dark-cube"
+            },
+            {
+              "name": "Headlines",
+              "tagline": "Stay Informed",
+              "icon": "news-cube"
+            },
+            {
+              "name": "Coz Everyone",
+              "tagline": "Deserves a Break",
+              "icon": "smile-cube"
+            },
+            {
+              "name": "Vocspad",
+              "tagline": "Voice & Sound",
+              "icon": "waveform-cube"
+            },
+            {
+              "name": "Settings",
+              "tagline": "Your World. Your Rules.",
+              "icon": "settings-cube"
+            }
+          ]
+        }
+      },
+      {
+        "id": "multi-model",
+        "type": "features",
+        "visible": true,
+        "order": 2,
+        "content": {
+          "title": "Multi-Model AI System",
+          "subtitle": "Built for Privacy",
+          "description": "Cubiqo intelligently routes your requests to the most suitable AI model—whether Claude, OpenAI, or specialized systems—ensuring optimal performance for every task. Your data remains abstract and never stored. Always secure.",
+          "backgroundImage": "/assets/cubiqo-com/features-multi-model.jpg",
+          "principles": [
+            "Zero data retention—conversations exist only in transit",
+            "Intelligent routing to optimal AI models per context",
+            "Abstract understanding through visual semantics",
+            "End-to-end encryption on all communications"
+          ],
+          "testimonials": {
+            "enabled": true,
+            "videos": [
+              {
+                "author": "Dr. Maya Chen",
+                "role": "AI Researcher",
+                "thumbnail": "/assets/testimonials/maya.jpg"
+              },
+              {
+                "author": "Marcus Jones",
+                "role": "Tech Lead",
+                "thumbnail": "/assets/testimonials/marcus.jpg"
+              },
+              {
+                "author": "Akira Tanaka",
+                "role": "Product Manager",
+                "thumbnail": "/assets/testimonials/akira.jpg"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "intelligence",
+        "type": "features",
+        "visible": true,
+        "order": 3,
+        "content": {
+          "title": "Intelligence, Reimagined",
+          "backgroundImage": "/assets/cubiqo-com/features-intelligence.jpg",
+          "capabilities": [
+            {
+              "name": "BYO Mode",
+              "description": "Your AI, Your Rules"
+            },
+            {
+              "name": "Zero Storage Mode",
+              "description": "Conversations exist only in transit"
+            },
+            {
+              "name": "Co-Op Wallet",
+              "description": "Shared resources, shared benefits"
+            },
+            {
+              "name": "Context Awareness",
+              "description": "Understands your world"
+            }
+          ],
+          "cooperative": {
+            "title": "The Cooperative V.A. The World Needs",
+            "certified": true,
+            "badge": "CO OP ASSIST"
+          },
+          "features": [
+            {
+              "title": "Zero Data Retention",
+              "description": "Conversations exist only in transit. No logs, no behavioral tracking."
+            },
+            {
+              "title": "End-to-End Encryption",
+              "description": "Military-grade security on all communications. Your data remains abstract and never stored."
+            },
+            {
+              "title": "Private Mode Deployment",
+              "description": "Run on your infrastructure with full control. Bring your own node for complete autonomy."
+            },
+            {
+              "title": "Team Collaboration",
+              "description": "Shared workspaces with role-based access. Coordinate across organizations securely."
+            },
+            {
+              "title": "Multi-Model Intelligence",
+              "description": "Routes requests to optimal AI—Claude for reasoning, OpenAI for creativity, specialized models for domain tasks."
+            },
+            {
+              "title": "Voice & Text Interface",
+              "description": "Natural speech recognition and text I/O. Switch seamlessly between interaction modes."
+            },
+            {
+              "title": "Intelligent Scheduling",
+              "description": "Email and calendar management with context. Automated booking and coordination."
+            },
+            {
+              "title": "API Integration",
+              "description": "Connect with your existing tools. Extensible platform for custom workflows."
+            }
+          ]
+        }
+      },
+      {
+        "id": "mobile-complete",
+        "type": "features",
+        "visible": true,
+        "order": 4,
+        "content": {
+          "title": "Complete Assistant",
+          "backgroundImage": "/assets/cubiqo-com/features-mobile-app.jpg",
+          "features": [
+            {
+              "title": "Privacy Architecture",
+              "description": "No conversation logs. No behavioral tracking. Abstract processing ensures your data never exists in concrete form.",
+              "icon": "shield"
+            },
+            {
+              "title": "Intelligent Routing",
+              "description": "Automatically selects the optimal AI model for each request—Claude for reasoning, OpenAI for creativity, specialized models for domain tasks.",
+              "icon": "network"
+            },
+            {
+              "title": "Complete Assistant",
+              "description": "Voice commands, email management, calendar coordination, document analysis—unified through a single, secure interface.",
+              "icon": "assistant"
+            }
+          ],
+          "mobileScreenshots": [
+            "/assets/cubiqo-com/mobile-wallet.png",
+            "/assets/cubiqo-com/mobile-dashboard.png",
+            "/assets/cubiqo-com/mobile-worlds.png"
+          ]
+        }
+      },
+      {
+        "id": "features-grid",
+        "type": "features",
+        "visible": true,
+        "order": 5,
+        "content": {
+          "layout": "grid-3col",
+          "features": [
+            {
+              "title": "Privacy First",
+              "description": "Zero data retention. End-to-end encryption. Private mode deployment.",
+              "icon": "shield"
+            },
+            {
+              "title": "Multi-Model Intelligence",
+              "description": "Claude, OpenAI, specialized models. Intelligent routing per context.",
+              "icon": "brain"
+            },
+            {
+              "title": "Voice & Text",
+              "description": "Natural speech recognition. Text commands. Seamless switching.",
+              "icon": "microphone"
+            },
+            {
+              "title": "Context Aware",
+              "description": "Learns preferences locally. Remembers conversations. Anticipates needs.",
+              "icon": "eye"
+            },
+            {
+              "title": "Team Collaboration",
+              "description": "Shared workspaces. Role-based access. Secure coordination.",
+              "icon": "users"
+            },
+            {
+              "title": "API Integration",
+              "description": "Connect existing tools. Extensible platform. Custom workflows.",
+              "icon": "plug"
+            }
+          ]
+        }
+      },
+      {
+        "id": "cta",
+        "type": "cta",
+        "visible": true,
+        "order": 6,
+        "content": {
+          "title": "Ready to Experience Intelligence, Reimagined?",
+          "subtitle": "Start with free access. No credit card required.",
+          "ctaText": "Get Free Access",
+          "ctaUrl": "/signup",
+          "footer": "Trusted by individuals and teams who demand more."
+        }
+      }
+    ]
+  },
+  "seo": {
+    "title": "CubiQo - Intelligence, Reimagined | Multi-Model AI Platform",
+    "description": "Private, secure, multi-model AI assistant. Routes to optimal models—Claude, OpenAI, specialized systems. Zero data retention. Your intelligence, your rules.",
+    "keywords": [
+      "multi-model AI",
+      "private AI assistant",
+      "secure AI platform",
+      "cooperative AI",
+      "BYO AI model",
+      "zero data retention",
+      "AI privacy",
+      "intelligent routing"
+    ],
+    "ogImage": "/assets/cubiqo-com/og-image.jpg",
+    "twitterCard": "summary_large_image",
+    "robots": "index,follow",
+    "sitemap": true
+  },
+  "analytics": {
+    "googleAnalytics": "G-XXXXXXXXXX",
+    "customEvents": true,
+    "trackColorChanges": false,
+    "trackChatInteractions": false,
+    "vercelAnalytics": true,
+    "vercelSpeedInsights": true
+  },
+  "integrations": {
+    "shopify": {
+      "enabled": false
+    },
+    "printify": {
+      "enabled": false
+    },
+    "supabase": {
+      "enabled": false
+    }
+  },
+  "features": {
+    "voice": false,
+    "chat": false,
+    "ecommerce": false,
+    "blog": false,
+    "newsletter": true,
+    "contactForm": true,
+    "cuboidAnimation": true
+  },
+  "deployment": {
+    "provider": "vercel",
+    "branch": "main",
+    "buildCommand": "npm run build",
+    "outputDirectory": ".next",
+    "autoDeployOnPush": false
+  },
+  "locale": {
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en"],
+    "timezone": "America/New_York",
+    "currency": "USD",
+    "dateFormat": "MM/DD/YYYY"
+  },
+  "permissions": {
+    "public": true,
+    "passwordProtected": false,
+    "requireAuth": false
+  }
+}

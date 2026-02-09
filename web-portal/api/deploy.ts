@@ -465,7 +465,7 @@ async function ensurePackageJson(dir: string, config: SiteConfig): Promise<void>
 
 export async function quickDeploy(
   subdomain: string,
-  template: string,
+  template: 'cubiqo-staging' | 'cubiqo-rolldown' | 'vollebak' | 'etsy-marketplace',
   ownerId: string,
   ownerEmail: string
 ): Promise<DeploymentResponse> {
