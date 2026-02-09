@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'CubiQo Web Portal - Admin Dashboard',
-  description: 'Comprehensive web portal management system with analytics, e-commerce, and deployment automation',
+  title: 'CubiQo - Intelligence, Reimagined',
+  description: 'Private, secure, multi-model AI assistant. Routes to optimal models—Claude, OpenAI, specialized systems.',
 };
 
 export default function RootLayout({
@@ -19,7 +18,6 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={inter.className}>
         {children}
-        <Toaster position="bottom-right" />
       </body>
     </html>
   );
