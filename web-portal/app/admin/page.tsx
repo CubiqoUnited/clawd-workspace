@@ -48,21 +48,42 @@ export default function AdminDashboard() {
   }, []);
 
   async function loadStats() {
-    try {
-      const response = await fetch('/api/dashboard/stats');
-      const data = await response.json();
-      setStats(data);
-    } catch (error) {
-      console.error('Failed to load stats:', error);
-    } finally {
+    // Mock data for static export
+    const mockStats: DashboardStats = {
+      sites: {
+        total: 12,
+        active: 8,
+        deploying: 2
+      },
+      analytics: {
+        sessions: 3847,
+        pageviews: 19235,
+        activeUsers: 847,
+        bounceRate: 32
+      },
+      products: {
+        total: 45,
+        inStock: 38
+      },
+      orders: {
+        total: 127,
+        pending: 12,
+        fulfilled: 115,
+        revenue: 245000 // in cents
+      }
+    };
+    
+    // Simulate API delay
+    setTimeout(() => {
+      setStats(mockStats);
       setLoading(false);
-    }
+    }, 500);
   }
 
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="spinner" />
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
   }
