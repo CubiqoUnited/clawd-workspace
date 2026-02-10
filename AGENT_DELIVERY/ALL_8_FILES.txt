@@ -1,0 +1,94 @@
+# CubiQo Agent System - All 8 Files
+
+Copy each file into your Next.js project at the specified path.
+
+---
+
+## FILE 1: src/lib/agent/tools.ts
+
+See above in chat history (Agent 1 output)
+
+---
+
+## FILE 2: src/lib/agent/loop.ts  
+
+See above in chat history (Agent 2 output)
+
+---
+
+## FILE 3: src/components/agent/ToolPanel.tsx
+
+See above in chat history (Agent 3 output)
+
+---
+
+## FILE 4: src/app/api/agent/execute/route.ts
+
+See above in chat history (Agent 4 output)
+
+---
+
+## FILE 5: src/hooks/useAgent.ts
+
+See above in chat history (Agent 5 output)
+
+---
+
+## FILE 6: src/types/agent.types.ts
+
+See above in chat history (Agent 6 output)
+
+---
+
+## FILE 7: src/lib/agent/executor.ts
+
+See above in chat history (Agent 7 output)
+
+---
+
+## FILE 8: src/contexts/AgentContext.tsx
+
+See above in chat history (Agent 8 output)
+
+---
+
+## Setup Instructions
+
+1. **Copy all files** to your Next.js project at the paths above
+2. **Wrap your app** with AgentProvider in app/layout.tsx:
+
+```tsx
+import { AgentProvider } from '@/contexts/AgentContext';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <AgentProvider>
+          {children}
+        </AgentProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+3. **Use in components**:
+
+```tsx
+import { useAgent } from '@/hooks/useAgent';
+
+export default function MyComponent() {
+  const { runTask, isRunning, enabledTools } = useAgent();
+  
+  return (
+    <button onClick={() => runTask("Search for TypeScript best practices")}>
+      Run Task
+    </button>
+  );
+}
+```
+
+---
+
+All files are TypeScript, use Tailwind for styling, and have no external dependencies beyond Next.js/React.

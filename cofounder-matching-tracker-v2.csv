@@ -1,0 +1,11 @@
+Platform,Category,Status,URL,Username,Password,Notes,Matches Found,Next Action
+Startup School,General,READY,https://www.startupschool.org,,,"Bio ready: Technical co-founder focus",0,"1. Go to URL 2. Sign up 3. Use bio"
+Founders Network,General,READY,https://foundersnetwork.com,,,"Bio ready: Senior founder focus, $6000/year",0,"1. Apply 2. Use senior-focused bio"
+Indie Hackers,General,READY,https://www.indiehackers.com,,,"Bio ready: Builder community focus",0,"1. Create profile 2. Post intro"
+Substack,General,READY,https://substack.com,,,"Bio ready: Media/co-author focus",0,"1. Create 'AI & Privacy Frontier' newsletter"
+Wellfound (AngelList),General,READY,https://wellfound.com,,,"Bio ready: Technical co-founder pool",0,"1. Create profile 2. Set 'open to co-founder'"
+Papers With Code,AI/ML Patent,READY,https://paperswithcode.com,,,"Bio ready: AI research implementation focus",0,"1. Join community 2. Engage researchers"
+Hugging Face,AI/ML Patent,READY,https://huggingface.co,,,"Bio ready: ML model deployment focus",0,"1. Join ML community 2. Showcase work"
+IPwe,AI/ML Patent,READY,https://ipwe.com,,,"Bio ready: Patent strategy focus",0,"1. Join patent network 2. Connect IP experts"
+Kaggle,AI/ML Patent,READY,https://kaggle.com,,,"Bio ready: Practical ML competition focus",0,"1. Join competitions 2. Showcase skills"
+GitBook Community,AI/ML Patent,READY,https://www.gitbook.com/community,,,"Bio ready: Technical documentation focus",0,"1. Join community 2. Connect writers"

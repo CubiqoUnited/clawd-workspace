@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Outreach Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: #718096;
+            font-size: 1.2rem;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 15px;
+            background: #f7fafc;
+            border-left: 5px solid #667eea;
+        }
+        
+        h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #4a5568;
+            margin: 20px 0 10px;
+            font-size: 1.3rem;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .portal-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .portal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .portal-name {
+            color: #2d3748;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .portal-desc {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+        
+        .channel-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .channel-tag {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .pitch-template {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px dashed #cbd5e0;
+            margin-top: 20px;
+        }
+        
+        .template-section {
+            margin-bottom: 20px;
+        }
+        
+        .template-label {
+            font-weight: bold;
+            color: #4a5568;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .template-content {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #48bb78;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Investor Outreach Plan</h1>
+            <p class="subtitle">Strategic framework for identifying, contacting, and pitching to investors</p>
+        </header>
+        
+        <div class="section">
+            <h2>🎯 Target Investor Profiles</h2>
+            <h3>Types of Investors to Target:</h3>
+            <ul>
+                <li><strong>Angel Investors:</strong> High-net-worth individuals investing personal funds</li>
+                <li><strong>Venture Capital Firms:</strong> Early-stage (Seed, Series A) focused funds</li>
+                <li><strong>Corporate Venture Capital:</strong> Strategic investors from relevant industries</li>
+                <li><strong>Accelerators/Incubators:</strong> Y Combinator, Techstars, etc.</li>
+                <li><strong>Family Offices:</strong> Private wealth management for wealthy families</li>
+                <li><strong>Syndicates:</strong> AngelList syndicates, Republic, etc.</li>
+            </ul>
+            
+            <h3>Ideal Investor Criteria:</h3>
+            <ul>
+                <li>Investment range: $50K - $2M</li>
+                <li>Industry focus matches your sector</li>
+                <li>Geographic preference aligns with your location</li>
+                <li>Stage preference: Pre-seed to Series A</li>
+                <li>Value-add beyond capital (connections, expertise)</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>🌐 Investor Discovery Portals</h2>
+            <p>Platforms like Y Combinator for finding and connecting with investors:</p>
+            
+            <div class="portal-grid">
+                <div class="portal-card">
+                    <div class="portal-name">AngelList</div>
+                    <div class="portal-desc">Primary platform for startup fundraising with investor profiles, syndicates, and job listings.</div>
+                </div>
+                
+                <div class="portal-card">
+                    <div class="portal-name">Crunchbase</div>
+                    <div class="portal-desc">Database of companies and investors with funding history and contact information.</div>
+                </div>
+                
+                <div class="portal-card">
+                    <div class="portal-name">PitchBook</div>
+                    <div class="portal-desc">Comprehensive private market data with detailed investor profiles and deal tracking.</div>
+                </div>
+                
+                <div class="portal-card">
+                    <div class="portal-name">LinkedIn</div>
+                    <div class="portal-desc">Professional network for identifying investor profiles and warm introductions.</div>
+                </div>
+                
+                <div class="portal-card">
+                    <div class="portal-name">Gust</div>
+                    <div class="portal-desc">Platform used by many accelerators for application management and investor connections.</div>
+                </div>
+                
+                <div class="portal-card">
+                    <div class="portal-name">F6S</div>
+                    <div class="portal-desc">Global startup community with accelerator applications and investor matching.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📢 Outreach Channels & Strategy</h2>
+            
+            <h3>Primary Channels:</h3>
+            <div class="channel-list">
+                <span class="channel-tag">Email (Cold)</span>
+                <span class="channel-tag">LinkedIn (Warm)</span>
+                <span class="channel-tag">Twitter/X (Engagement)</span>
+                <span class="channel-tag">AngelList (Direct)</span>
+                <span class="channel-tag">Warm Introductions</span>
+                <span class="channel-tag">Events/Conferences</span>
+                <span class="channel-tag">Demo Days</span>
+                <span class="channel-tag">Investor Updates</span>
+            </div>
+            
+            <h3>Outreach Sequence:</h3>
+            <ol>
+                <li><strong>Research:</strong> Identify 50-100 target investors with relevant focus</li>
+                <li><strong>Warm-up:</strong> Follow on social media, engage with content (2-3 weeks)</li>
+                <li><strong>Initial Contact:</strong> Personalized email/LinkedIn message</li>
+                <li><strong>Follow-up:</strong> 2-3 follow-ups spaced 5-7 days apart</li>
+                <li><strong>Meeting Request:</strong> Clear call-to-action for 15-30 minute call</li>
+                <li><strong>Nurture:</strong> Add to investor update list regardless of response</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>🎤 Pitch Framework</h2>
+            
+            <div class="pitch-template">
+                <div class="template-section">
+                    <span class="template-label">Subject Line (Email):</span>
+                    <div class="template-content">
+                        [Your Company Name] - [Brief Value Prop] - Seeking [Amount] for [Purpose]
+                    </div>
+                </div>
+                
+                <div class="template-section">
+                    <span class="template-label">Opening (30 seconds):</span>
+                    <div class="template-content">
+                        "Hi [Investor Name], I'm [Your Name], founder of [Company Name]. We're building [clear problem statement] for [target market]. We've achieved [key metric/traction] and are raising [amount] to [specific use of funds]."
+                    </div>
+                </div>
+                
+                <div class="template-section">
+                    <span class="template-label">Problem (1 minute):</span>
+                    <div class="template-content">
+                        "Currently, [target customers] struggle with [specific pain points]. The existing solutions [competitor weaknesses] costing them [quantifiable impact]."
+                    </div>
+                </div>
+                
+                <div class="template-section">
+                    <span class="template-label">Solution (1 minute):</span>
+                    <div class="template-content">
+                        "Our [product/service] solves this by [unique approach]. Unlike [competitors], we [key differentiators]. Our technology/approach enables [specific benefits]."
+                    </div>
+                </div>
+                
+                <div class="template-section">
+                    <span class="template-label">Traction (1 minute):</span>
+                    <div class="template-content">
+                        "In [time period], we've achieved: [revenue/users/customers], [growth rate], [partnerships], [awards/recognition]. Our roadmap shows [near-term milestones]."
+                    </div>
+                </div>
+                
+                <div class="template-section">
+                    <span class="template-label">Ask & Team (30 seconds):</span>
+                    <div class="template-content">
+                        "We're raising [amount] at [valuation] to [specific use of funds]. Our team includes [relevant experience]. We believe your expertise in [investor's focus area] would be valuable."
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📋 Action Plan</h2>
+            <ol>
+                <li><strong>Week 1-2:</strong> Build target list of 100 investors with research notes</li>
+                <li><strong>Week 3-4:</strong> Create personalized outreach templates for each segment</li>
+                <li><strong>Week 5-6:</strong> Begin outreach campaign (20-30 contacts/week)</li>
+                <li><strong>Week 7-8:</strong> Schedule and conduct initial meetings</li>
+                <li><strong>Week 9-10:</strong> Follow up with pitch decks and due diligence materials</li>
+                <li><strong>Ongoing:</strong> Send monthly investor updates to entire list</li>
+            </ol>
+            
+            <h3>Success Metrics:</h3>
+            <ul>
+                <li>Response rate: 10-20%</li>
+                <li>Meeting conversion: 30-50% of responses</li>
+                <li>Term sheet rate: 5-10% of meetings</li>
+                <li>Time to close: 60-90 days from first contact</li>
+            </ul>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="downloadPlan()">Download This Plan</button>
+            <button class="btn btn-secondary" onclick="printPlan()">Print Plan</button>
+        </div>
+        
+        <footer>
+            <p>Investor Outreach Plan • Generated on <span id="currentDate"></span></p>
+            <p>Update regularly with new investor contacts and outreach results</p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        function downloadPlan() {
+            const element = document.querySelector('.container');
+            const opt = {
+                margin:       1,
+                filename:     'investor-outreach-plan.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            // html2pdf().set(opt).from(element).save();
+            alert('PDF download would be implemented with html2pdf library');
+        }
+        
+        function printPlan() {
+            window.print();
+        }
+        
+        // Add interactivity to portal cards
+        document.querySelectorAll('.portal-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const portalName = this.querySelector('.portal-name').textContent;
+                alert(`Learn more about ${portalName}:\n\nVisit their website for detailed investor matching features.`);
+            });
+        });
+    </script>
+</body>
+</html>

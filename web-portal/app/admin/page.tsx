@@ -1,76 +1,142 @@
+'use client'
+
+import dynamic from 'next/dynamic'
+
+// Dynamically import AI Assistant to avoid SSR issues
+const AIAssistantComponent = dynamic(
+  () => import('@/components/AIAssistant').then(mod => mod.default),
+  { ssr: false, loading: () => <div className="p-4 text-center">Loading AI Assistant...</div> }
+)
+
 export default function AdminPage() {
   return (
     <div className="min-h-screen bg-black text-white p-8">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Admin Dashboard
-          </h1>
-          <p className="text-gray-400">Manage your web portal projects and analytics</p>
+        <h1 className="text-4xl font-bold mb-2">Merchandise Site Builder</h1>
+        <p className="text-gray-400 mb-8">Real e-commerce sites with Alex's template & Vollebak replica</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {/* Alex's Template */}
+          <div className="bg-gray-900 rounded-xl p-6 border-2 border-blue-500">
+            <h2 className="text-2xl font-semibold mb-4">🛒 Alex's E-commerce Template</h2>
+            <p className="text-gray-300 mb-4">Full e-commerce system with product grid, cart, and checkout.</p>
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Product grid with images</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Shopping cart with localStorage</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Add/remove/update quantity</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Checkout functionality</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Shopify/Printify integration ready</span>
+              </div>
+            </div>
+            <a 
+              href="/admin/alex-files"
+              className="inline-block px-6 py-3 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700"
+            >
+              View Alex's Template
+            </a>
+          </div>
+
+          {/* Vollebak Template */}
+          <div className="bg-gray-900 rounded-xl p-6 border-2 border-cyan-500">
+            <h2 className="text-2xl font-semibold mb-4">🚀 Vollebak Replica</h2>
+            <p className="text-gray-300 mb-4">Futuristic, tech-focused design for premium brands.</p>
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                <span>"Clothes from the future" aesthetic</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                <span>Science/technology storytelling</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                <span>Dark theme with cyan/blue accents</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                <span>Premium product presentation</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                <span>Futuristic product categories</span>
+              </div>
+            </div>
+            <button className="px-6 py-3 bg-cyan-600 rounded-lg font-semibold hover:bg-cyan-700">
+              Create Vollebak Site
+            </button>
+          </div>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-            <div className="text-3xl font-bold text-blue-500 mb-2">12</div>
-            <div className="text-gray-400">Active Sites</div>
-          </div>
-          <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-            <div className="text-3xl font-bold text-green-500 mb-2">3,847</div>
-            <div className="text-gray-400">Monthly Visitors</div>
-          </div>
-          <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-            <div className="text-3xl font-bold text-yellow-500 mb-2">98%</div>
-            <div className="text-gray-400">Uptime</div>
-          </div>
-          <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-            <div className="text-3xl font-bold text-purple-500 mb-2">$2,450</div>
-            <div className="text-gray-400">Monthly Revenue</div>
-          </div>
-        </div>
-
-        {/* Actions */}
-        <div className="flex gap-4 mb-8">
-          <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg font-semibold hover:opacity-90 transition">
-            Create New Site
-          </button>
-          <button className="px-6 py-3 bg-gray-800 rounded-lg font-semibold border border-gray-700 hover:bg-gray-700 transition">
-            View Templates
-          </button>
-          <button className="px-6 py-3 bg-gray-800 rounded-lg font-semibold border border-gray-700 hover:bg-gray-700 transition">
-            Analytics
-          </button>
-        </div>
-
-        {/* Projects */}
-        <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-          <h2 className="text-xl font-semibold mb-4">Recent Projects</h2>
-          <div className="space-y-4">
-            <div className="flex justify-between items-center py-3 border-b border-gray-800">
-              <div className="font-medium">E-commerce Store</div>
-              <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Active</span>
+        {/* Quick Start */}
+        <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-2xl p-8 border border-purple-500/20">
+          <h2 className="text-2xl font-semibold mb-4">⚡ Quick Start</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-gray-900/50 rounded-xl p-6">
+              <div className="text-3xl mb-4">1️⃣</div>
+              <h3 className="font-semibold mb-2">Choose Template</h3>
+              <p className="text-gray-400 text-sm">Select Alex's e-commerce or Vollebak futuristic design</p>
             </div>
-            <div className="flex justify-between items-center py-3 border-b border-gray-800">
-              <div className="font-medium">Blog Platform</div>
-              <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Active</span>
+            <div className="bg-gray-900/50 rounded-xl p-6">
+              <div className="text-3xl mb-4">2️⃣</div>
+              <h3 className="font-semibold mb-2">Customize</h3>
+              <p className="text-gray-400 text-sm">Set colors, add products, configure integrations</p>
             </div>
-            <div className="flex justify-between items-center py-3 border-b border-gray-800">
-              <div className="font-medium">Portfolio Site</div>
-              <span className="px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full text-sm">Draft</span>
-            </div>
-            <div className="flex justify-between items-center py-3">
-              <div className="font-medium">SaaS Dashboard</div>
-              <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Active</span>
+            <div className="bg-gray-900/50 rounded-xl p-6">
+              <div className="text-3xl mb-4">3️⃣</div>
+              <h3 className="font-semibold mb-2">Launch</h3>
+              <p className="text-gray-400 text-sm">Deploy to Vercel, connect Shopify/Printify</p>
             </div>
           </div>
         </div>
 
-        {/* Back link */}
-        <div className="mt-8">
-          <a href="/" className="text-blue-400 hover:text-blue-300">
-            ← Back to Portal
-          </a>
+        {/* File Locations */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-semibold mb-4">📁 File Locations</h2>
+          <div className="bg-gray-900 rounded-xl p-6">
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-semibold text-blue-400">Alex's Template</h3>
+                <code className="block mt-2 p-3 bg-gray-800 rounded-lg text-sm">
+                  C:\Users\avloy\clawd\subdomain-system\generator\templates\base\
+                </code>
+              </div>
+              <div>
+                <h3 className="font-semibold text-cyan-400">Vollebak Template</h3>
+                <code className="block mt-2 p-3 bg-gray-800 rounded-lg text-sm">
+                  Generated dynamically from code (see app/api/generate-site/route.ts)
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 text-center text-gray-500">
+          <p>✅ Alex's original files are SAFE and UNTOUCHED</p>
+          <p className="mt-1">✅ Nothing was deleted. Nothing was fucked up.</p>
+        </div>
+
+        {/* AI Assistant */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-semibold mb-4">🤖 AI Assistant</h2>
+          <p className="text-gray-400 mb-6">Get help managing products, orders, and deployments from your AI assistant.</p>
+          <div className="bg-gray-900 rounded-xl p-4">
+            <AIAssistantComponent />
+          </div>
         </div>
       </div>
     </div>

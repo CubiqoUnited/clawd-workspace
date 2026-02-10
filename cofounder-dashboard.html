@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-Founder Matching Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .platform-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .platform-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .platform-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .status {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status.ready {
+            background: #10b981;
+            color: white;
+        }
+        
+        .platform-url {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+            word-break: break-all;
+        }
+        
+        .platform-url:hover {
+            text-decoration: underline;
+        }
+        
+        .bio-preview {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #555;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        .actions {
+            margin-top: 20px;
+        }
+        
+        .action-list {
+            list-style: none;
+        }
+        
+        .action-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .action-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .action-list li:before {
+            content: "✓";
+            color: #10b981;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .action-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: #5a67d8;
+        }
+        
+        .progress-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .progress-count {
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 20%;
+            transition: width 0.5s ease;
+        }
+        
+        .next-steps {
+            margin-top: 40px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .next-steps h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .steps-list {
+            list-style: none;
+        }
+        
+        .steps-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .steps-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Co-Founder Matching Dashboard</h1>
+            <p>10 platforms ready for profile creation • All bios prepared • Track your progress</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">5 General Platforms + 5 AI/ML Patent-Focused Platforms</p>
+        </div>
+        
+        <div class="platforms-grid">
+            <!-- Startup School Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">Startup School</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://www.startupschool.org" class="platform-url" target="_blank">https://www.startupschool.org</a>
+                <div class="bio-preview">
+                    Building Cubiqo - AI-powered private browser that understands content like humans do. Solving intelligent discovery with absolute privacy. MVP ready with local AI models, browser extension, and Next.js frontend. Looking for technical co-founder with AI/ML or browser development experience to scale the vision.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Navigate to registration page</li>
+                        <li>Fill signup form</li>
+                        <li>Complete profile with bio</li>
+                        <li>Set interests: AI/ML, Privacy Tech, Browsers</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://www.startupschool.org', '_blank')">Go to Startup School</button>
+                </div>
+            </div>
+            
+            <!-- Founders Network Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">Founders Network</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://foundersnetwork.com" class="platform-url" target="_blank">https://foundersnetwork.com</a>
+                <div class="bio-preview">
+                    Serial founder building Cubiqo - redefining private browsing with AI intelligence. Previous experience in AI media platforms. Currently at MVP stage with proprietary local AI models for content understanding. Seeking experienced technical co-founder for scaling, fundraising, and product strategy.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Navigate to application page</li>
+                        <li>Fill application form</li>
+                        <li>Submit for membership review</li>
+                        <li>Note: $6000/year fee</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://foundersnetwork.com', '_blank')">Go to Founders Network</button>
+                </div>
+            </div>
+            
+            <!-- Indie Hackers Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">Indie Hackers</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://www.indiehackers.com" class="platform-url" target="_blank">https://www.indiehackers.com</a>
+                <div class="bio-preview">
+                    Building Cubiqo in public - AI browser that actually understands what you're looking for (yes, even adult content). Solving the "I can't find specific videos" problem with local AI models. MVP built, launching soon. Looking for co-founder who loves privacy tech, AI, and actually shipping products.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Create account</li>
+                        <li>Fill profile with bio</li>
+                        <li>Make introductory post</li>
+                        <li>Engage with community</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://www.indiehackers.com', '_blank')">Go to Indie Hackers</button>
+                </div>
+            </div>
+            
+            <!-- Substack Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">Substack</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://substack.com" class="platform-url" target="_blank">https://substack.com</a>
+                <div class="bio-preview">
+                    Exploring the intersection of AI, privacy, and human-computer interaction. Building Cubiqo - an AI browser that respects your privacy while understanding your needs. Writing about AI ethics, privacy tech, and the future of intelligent interfaces. Open to co-authors and collaborators.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Create newsletter: "AI & Privacy Frontier"</li>
+                        <li>Set up profile with bio</li>
+                        <li>Write first post</li>
+                        <li>Engage with other AI writers</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://substack.com', '_blank')">Go to Substack</button>
+                </div>
+            </div>
+            
+            <!-- Wellfound Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">Wellfound (AngelList)</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://wellfound.com" class="platform-url" target="_blank">https://wellfound.com</a>
+                <div class="bio-preview">
+                    Technical founder building Cubiqo - AI-powered private browser. Expertise: AI/ML, browser development, privacy tech. Currently: MVP with local AI models, semantic search, privacy architecture. Seeking: Co-founder with complementary skills (growth, product, or deep AI). Open to: Full-time, equity-based partnership.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Create profile</li>
+                        <li>Set "Open to co-founder" status</li>
+                        <li>Complete all profile sections</li>
+                        <li>Connect with AI/ML founders</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://wellfound.com', '_blank')">Go to Wellfound</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI/ML Patent-Focused Platforms -->
+        <div class="header" style="margin-top: 60px;">
+            <h2>🧠 AI/ML Patent & Documentation Platforms</h2>
+            <p>Specialized platforms for technical AI co-founders with patent experience</p>
+        </div>
+        
+        <div class="platforms-grid">
+            <!-- Papers With Code Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">Papers With Code</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://paperswithcode.com" class="platform-url" target="_blank">https://paperswithcode.com</a>
+                <div class="bio-preview">
+                    Implementing cutting-edge AI research from academic papers into Cubiqo - a private browser that understands content. Our team translates SOTA research into practical, patentable algorithms for content understanding. Looking for co-founder with published AI research (CVPR, NeurIPS, ICML) and experience turning research into products.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Join AI research community</li>
+                        <li>Engage with paper authors</li>
+                        <li>Showcase implementation work</li>
+                        <li>Connect with researchers</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://paperswithcode.com', '_blank')">Go to Papers With Code</button>
+                </div>
+            </div>
+            
+            <!-- Hugging Face Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">Hugging Face</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://huggingface.co" class="platform-url" target="_blank">https://huggingface.co</a>
+                <div class="bio-preview">
+                    Building Cubiqo with optimized local Hugging Face models for private, on-device content understanding. We're creating novel model architectures for semantic search in privacy-sensitive contexts. Seeking co-founder with ML deployment experience, model optimization, and open-source contributions.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Join ML community</li>
+                        <li>Contribute to open-source</li>
+                        <li>Showcase model work</li>
+                        <li>Connect with ML engineers</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://huggingface.co', '_blank')">Go to Hugging Face</button>
+                </div>
+            </div>
+            
+            <!-- IPwe Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">IPwe</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://ipwe.com" class="platform-url" target="_blank">https://ipwe.com</a>
+                <div class="bio-preview">
+                    Developing a comprehensive patent portfolio for AI browser algorithms at Cubiqo. Our novel approaches to content understanding and privacy-preserving AI are patent-pending. Looking for co-founder with patent strategy experience, AI IP background, and understanding of defensive patenting.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Join patent network</li>
+                        <li>Connect with IP experts</li>
+                        <li>Explore patent licensing</li>
+                        <li>Find patent strategy partners</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://ipwe.com', '_blank')">Go to IPwe</button>
+                </div>
+            </div>
+            
+            <!-- Kaggle Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">Kaggle</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://kaggle.com" class="platform-url" target="_blank">https://kaggle.com</a>
+                <div class="bio-preview">
+                    Solving real-world content discovery problems with ML at Cubiqo. We approach content understanding as a Kaggle-style optimization challenge with privacy constraints. Seeking co-founder with Kaggle competition experience (top 10%), practical ML skills, and data pipeline expertise.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Join competitions</li>
+                        <li>Showcase ML skills</li>
+                        <li>Connect with top performers</li>
+                        <li>Build practical ML portfolio</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://kaggle.com', '_blank')">Go to Kaggle</button>
+                </div>
+            </div>
+            
+            <!-- GitBook Card -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div class="platform-name">GitBook Community</div>
+                    <div class="status ready">READY</div>
+                </div>
+                <a href="https://www.gitbook.com/community" class="platform-url" target="_blank">https://www.gitbook.com/community</a>
+                <div class="bio-preview">
+                    Creating comprehensive documentation for Cubiqo's AI algorithms, both for patent applications and developer adoption. Our documentation needs to communicate complex AI concepts clearly for both legal and technical audiences. Looking for co-founder with technical writing experience, API documentation skills, and ability to translate AI concepts.
+                </div>
+                <div class="actions">
+                    <ul class="action-list">
+                        <li>Join documentation community</li>
+                        <li>Showcase technical writing</li>
+                        <li>Connect with documentation experts</li>
+                        <li>Build patent documentation</li>
+                    </ul>
+                    <button class="action-button" onclick="window.open('https://www.gitbook.com/community', '_blank')">Go to GitBook Community</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-section">
+            <div class="progress-header">
+                <div class="progress-title">Overall Progress</div>
+                <div class="progress-count">1 of 5 completed</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="actions">
+                <button class="action-button" onclick="updateProgress()">Mark Platform as Completed</button>
+            </div>
+        </div>
+        
+        <div class="next-steps">
+            <h3>📋 Next Steps</h3>
+            <ul class="steps-list">
+                <li><span class="step-number">1</span> Open each platform URL in your browser</li>
+                <li><span class="step-number">2</span> Copy the bio from the card above</li>
+                <li><span class="step-number">3</span> Create account and complete profile</li>
+                <li><span class="step-number">4</span> Mark as completed in progress tracker</li>
+                <li><span class="step-number">5</span> Begin outreach to potential co-founders</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let completed = 1;
+        const total = 10; // Updated to include all 10 platforms
+        
+        function updateProgress() {
+            if (completed < total) {
+                completed++;
+                const percentage = (completed / total) * 100;
+                document.getElementById('progressFill').style.width = percentage + '%';
+                document.querySelector('.progress-count').textContent = completed + ' of ' + total + ' completed';
+                
+                // Show completion messages at milestones
+                if (completed === 5) {
+                    alert('🎉 Halfway there! 5 platforms completed!');
+                }
+                if (completed === total) {
+                    alert('🚀 All 10 platforms completed! Ready to find your AI co-founder!');
+                }
+            }
+        }
+        
+        // Initialize progress bar
+        document.getElementById('progressFill').style.width = (completed / total) * 100 + '%';
+    </script>
+</body>
+</html>

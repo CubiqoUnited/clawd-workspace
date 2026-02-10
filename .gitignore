@@ -11,3 +11,6 @@ temp-*.xml
 *.docx
 *.pdf
 pdf-*.txt
+
+.vercel
+.env*.local

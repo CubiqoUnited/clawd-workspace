@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --primary: 180 100% 50%;
+    --secondary: 216 100% 50%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-vollebak-cyan to-vollebak-blue;
+  }
+
+  .bg-gradient-futuristic {
+    @apply bg-gradient-to-br from-vollebak-black via-vollebak-gray to-vollebak-dark;
+  }
+
+  .border-glow {
+    @apply border border-vollebak-cyan/20 shadow-[0_0_20px_rgba(0,255,255,0.1)];
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:border-vollebak-cyan/40 hover:shadow-[0_0_30px_rgba(0,255,255,0.2)];
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-vollebak-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-vollebak-cyan/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-vollebak-cyan/50;
+}
+
+/* Selection */
+::selection {
+  @apply bg-vollebak-cyan/30 text-white;
+}
+
+/* Focus styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-vollebak-cyan ring-offset-2 ring-offset-vollebak-black;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}

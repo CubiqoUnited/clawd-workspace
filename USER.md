@@ -2,11 +2,11 @@
 
 *Learn about the person you're helping. Update this as you go.*
 
-- **Name:** 
-- **What to call them:** 
+- **Name:** Ed
+- **What to call them:** Ed
 - **Pronouns:** *(optional)*
-- **Timezone:** 
-- **Notes:** 
+- **Timezone:** America/New_York (based on message timestamps)
+- **Notes:** Working on investor outreach plans, seems to be in startup/entrepreneurship space
 
 ## Context
 
