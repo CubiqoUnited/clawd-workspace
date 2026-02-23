@@ -130,5 +130,20 @@ web-portal/
 
 ---
 
-*Last Updated: February 9, 2026, 2:45 AM*
+## GitHub Repository Access
+
+### CubiqoUnited Organization Repos (as of Feb 2026)
+- **clawd-workspace** — this workspace (TypeScript, main project hub)
+- **ai-browser-contextual-search** — AI-powered browser for contextual search (JavaScript)
+- **holographic-blazar** — (TypeScript)
+
+### Access Notes
+- The agent can access all public repos via GitHub MCP tools (search, read files, view PRs/issues, etc.)
+- **`cubiqoTest`** — does NOT exist under CubiqoUnited (searched Feb 23 2026)
+- **`cpandfolder`** — does NOT exist under CubiqoUnited (searched Feb 23 2026)
+- If Ed wants access to a private repo, it must be created/shared first
+
+---
+
+*Last Updated: February 23, 2026*
 *Next Review: After designer system completion*
