@@ -31,6 +31,15 @@ Things like:
 
 Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
 
+## GitHub Repos
+
+### CubiqoUnited (org)
+- **clawd-workspace** — this workspace
+- **ai-browser-contextual-search** — AI browser project
+- **holographic-blazar** — TypeScript project
+- ~~cubiqoTest~~ — does not exist (checked Feb 23 2026)
+- ~~cpandfolder~~ — does not exist (checked Feb 23 2026)
+
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
